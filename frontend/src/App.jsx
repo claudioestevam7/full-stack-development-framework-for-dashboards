@@ -1,23 +1,26 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import Sidebar from './components/Sidebar'
 import './App.css'
 import SidebarSetores from './components/SidebarSetores'
-import Planejamento from './components/planejamento/Planejamento';
+import Column from './components/Graficos/Column';
+import Pie from './components/Graficos/Pie';
 
 function App() {
 
   return (
-    <div className='flex '>
+    <div className='flex h-full'>
 
-      <div className='w-[300px] h-full border-4 border-primary-500 py-10'>
+      <Router>
+      <div className='w-[300px] border-4 border-primary-500 py-10'>
         <SidebarSetores />
       </div>
-      <Router>
+        <div className='w-full flex justify-center items-center'>
 
         <Routes>
-          <Route exact path="/planilha" element={<Planejamento />} />
+          <Route exact path="/pizza" element={<Pie />}/>
+          <Route path="/linha" element={<Column />}  />
         </Routes>
+        </div>
       </Router>
     </div>
 
