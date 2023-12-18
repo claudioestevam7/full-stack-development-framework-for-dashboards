@@ -1,27 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
 import Sidebar from './components/Sidebar'
-import LineChart from './components/LineChart'
-import PieChart from './components/PieChart'
+import './App.css'
+import SidebarSetores from './components/SidebarSetores'
+import Planejamento from './components/planejamento/Planejamento';
 
 function App() {
 
   return (
-    <div className='flex'>
+    <div className='flex '>
 
-      <div className='border '>
-        <Sidebar />
+      <div className='w-[300px] h-full border-4 border-primary-500 py-10'>
+        <SidebarSetores />
       </div>
+      <Router>
 
-      <div>
-        <LineChart />
-      </div>
-
-      <div>
-        <PieChart />
-      </div>
-
+        <Routes>
+          <Route exact path="/planilha" element={<Planejamento />} />
+        </Routes>
+      </Router>
     </div>
 
   )
