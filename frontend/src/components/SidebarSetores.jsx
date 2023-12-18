@@ -1,12 +1,11 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-// import { PaletteIcon } from './icons/Icons'
-import { FaCoffee } from 'react-icons/fa';
 import { FaPalette, FaChartPie } from "react-icons/fa";
 import { FaChartColumn, FaChartLine } from "react-icons/fa6";
 import { PiChartBarHorizontalFill } from "react-icons/pi";
 import { BiBarChartSquare } from "react-icons/bi";
+import { AiOutlineGlobal } from "react-icons/ai";
 
 import Logo from '../assets/logoPrincipal.svg'
 
@@ -20,7 +19,8 @@ const setores = [['Palette', '/palette', <FaPalette size={sizeIcon} />],
 ['Column', '/column', <FaChartColumn size={sizeIcon} />],
 ['Line', '/line', <FaChartLine size={sizeIcon} />],
 ['Bar', '/bar', <PiChartBarHorizontalFill size={sizeIcon} />],
-['Pareto', '/pareto', <BiBarChartSquare size={sizeIcon} />]]
+['Pareto', '/pareto', <BiBarChartSquare size={sizeIcon} />],
+['OEE', '/oee', <AiOutlineGlobal size={sizeIcon} />]]
 
 const SidebarSetores = () => {
   const location = useLocation();

@@ -8,6 +8,7 @@ import Palette from './components/Graficos/Palette';
 import Line from './components/Graficos/Line';
 import Bar from './components/Graficos/Bar';
 import Pareto from './components/Graficos/Pareto';
+import Oee from './components/Graficos/Oee';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/line" element={<Line />}  />
           <Route path="/bar" element={<Bar />}  />
           <Route path="/pareto" element={<Pareto />}  />
+          <Route path="/oee" element={<Oee />}  />
         </Routes>
         </div>
       </Router>
