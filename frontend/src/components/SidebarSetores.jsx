@@ -6,6 +6,7 @@ import { FaCoffee } from 'react-icons/fa';
 import { FaPalette, FaChartPie } from "react-icons/fa";
 import { FaChartColumn, FaChartLine } from "react-icons/fa6";
 import { PiChartBarHorizontalFill } from "react-icons/pi";
+import { BiBarChartSquare } from "react-icons/bi";
 
 import Logo from '../assets/logoPrincipal.svg'
 
@@ -18,7 +19,8 @@ const setores = [['Palette', '/palette', <FaPalette size={sizeIcon} />],
 ['Pie', '/pie', <FaChartPie size={sizeIcon} />],
 ['Column', '/column', <FaChartColumn size={sizeIcon} />],
 ['Line', '/line', <FaChartLine size={sizeIcon} />],
-['Bar', '/bar', <PiChartBarHorizontalFill size={sizeIcon} />]]
+['Bar', '/bar', <PiChartBarHorizontalFill size={sizeIcon} />],
+['Pareto', '/pareto', <BiBarChartSquare size={sizeIcon} />]]
 
 const SidebarSetores = () => {
   const location = useLocation();
@@ -29,8 +31,8 @@ const SidebarSetores = () => {
       <div className="w-full ">
 
         <img src={Logo} />
-      </div>
       <h1 className='font-[Roboto] text-xl mt-2 font-bold'>DASHBOARD</h1>
+      </div>
 
 
       {/* Campos de escolher as abas */}

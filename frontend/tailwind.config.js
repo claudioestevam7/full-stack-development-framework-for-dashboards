@@ -9,8 +9,8 @@ export default {
       fontSize: {
         '24': '24px',
       },
-      borderRadius:{
-        '20':'20px',
+      borderRadius: {
+        '20': '20px',
       },
       colors: {
         primary: {
@@ -56,7 +56,7 @@ export default {
           700: "#263665",
           800: "#1a2443",
           900: "#0d1222"
-},
+        },
       }
 
     },
