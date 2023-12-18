@@ -1,41 +1,50 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { useState, useContext } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
+// import { PaletteIcon } from './icons/Icons'
+import { FaCoffee } from 'react-icons/fa';
+import { FaPalette, FaChartPie } from "react-icons/fa";
+import { FaChartColumn, FaChartLine } from "react-icons/fa6";
+import { PiChartBarHorizontalFill } from "react-icons/pi";
 
-const setores = [['Pizza', '/pizza'], ['Linha','/linha']]
+import Logo from '../assets/logoPrincipal.svg'
+
+const setorActivate = { iconcor: '#fff' }
+
+const corIcon = '#1c1c1c'
+const sizeIcon = 30
+
+const setores = [['Palette', '/palette', <FaPalette size={sizeIcon} />],
+['Pie', '/pie', <FaChartPie size={sizeIcon} />],
+['Column', '/column', <FaChartColumn size={sizeIcon} />],
+['Line', '/line', <FaChartLine size={sizeIcon} />],
+['Bar', '/bar', <PiChartBarHorizontalFill size={sizeIcon} />]]
 
 const SidebarSetores = () => {
+  const location = useLocation();
+
   return (
-    <div className='h-full'>
-      <h1>DASHBOARD</h1>
+    <div className='h-full flex flex-col'>
+      {/* Cabeçalho */}
+      <div className="w-full ">
 
-      <div className="mt-[10rem] w-full">
+        <img src={Logo} />
+      </div>
+      <h1 className='font-[Roboto] text-xl mt-2 font-bold'>DASHBOARD</h1>
 
 
+      {/* Campos de escolher as abas */}
+      <div className="mt-[5rem] w-full">
         {setores.map((setor) => {
           return (
+            // botão para a aba escolhida
             <Link to={setor[1]} key={setor}>
-              <div className="w-full h-[3rem] bg-secundary-500 flex justify-start items-center px-7 mb-2 rounded-20" >
-
-
-                <div className='mr-5'>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlSpace="preserve"
-                    width={35}
-                    height={30}
-                    viewBox="0 0 32 32"
-                  >
-                    <path
-                      d="M15 14H3v3h12v-3zm-1 2H4v-1h10v1zm-8 5h16v-3H6v3zm1-2h14v1H7v-1zm15 10h7v-3h-7v3zm1-2h5v1h-5v-1zm-9-2h13v-3H14v3zm1-2h11v1H15v-1zM31 5h-3V3c0-1.654-1.346-3-3-3s-3 1.346-3 3v2H10V3c0-1.654-1.346-3-3-3S4 1.346 4 3v2H1a1 1 0 0 0-1 1v25a1 1 0 0 0 1 1h30a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1zm-7-2a1 1 0 0 1 2 0v5c0 .551-.449 1-1 1s-1-.449-1-1V3zM6 3a1 1 0 0 1 2 0v5c0 .551-.449 1-1 1s-1-.449-1-1V3zm24 27H2V12h28v18zm0-19H2V7h3v1a2 2 0 1 0 4 0V7h14v1a2 2 0 1 0 4 0V7h3v4z"
-                      style={{
-                        fill: "#fff",
-                      }}
-                    />
-                  </svg>
+              <div className={location.pathname == setor[1] ? "w-full h-[3rem] bg-secundary-500 flex justify-start items-center px-7 mb-2 rounded-20 text-primary-100 duration-500 delay-500`" :
+                "w-full h-[3rem] bg-primary-100 flex justify-start items-center px-7 mb-2 rounded-20 duration-500 delay-75 hover:bg-primary-400"} >
+                <div className='mr-5 w-6'>
+                  {setor[2]}
                 </div>
-                <h3 className='text-24 font-bol text-primary-100'>
+                <h3 className='text-24 font-bol '>
                   {setor[0]}
                 </h3>
               </div>
@@ -43,6 +52,13 @@ const SidebarSetores = () => {
           )
         })
         }
+      </div>
+      <div className="flex-grow flex justify-center items-end">
+        <div className="flex flex-col">
+
+          <p className='text-sm'>@ 2024 Locomotiva</p>
+          <p className='text-sm'>Cláudio Estevam</p>
+        </div>
       </div>
     </div>
   )
