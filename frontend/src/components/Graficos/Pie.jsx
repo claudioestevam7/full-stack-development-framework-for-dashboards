@@ -1,5 +1,6 @@
 import React from 'react'
 import data from '../../../../database/population-by-age.csv'
+import * as d3 from 'd3'
 
 const Pie = () => {
   // Specify the chart’s dimensions.
@@ -65,7 +66,11 @@ const Pie = () => {
           .attr("fill-opacity", 0.7)
           .text(d => d.data.value.toLocaleString("en-US")));
 
-  return svg.node();
+  return (
+    <>
+    svg.node();
+    </>
+    )
 }
 
 export default Pie
