@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: [
     "./index.html",
@@ -63,5 +64,19 @@ export default {
 
     },
   },
-  plugins: [],
+  layers: {
+    utilities: ['custom-stroke'],
+  },
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.custom-stroke': {
+          '-webkit-text-stroke-width': '2px',
+          '-webkit-text-stroke-color': '#fff',
+        },
+      };
+
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    },
+  ],
 }

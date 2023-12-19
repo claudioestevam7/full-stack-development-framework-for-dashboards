@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import * as d3 from 'd3'
+import { TbTriangleFilled } from "react-icons/tb";
 
 const IndicatorChart = ({
 
@@ -136,33 +137,38 @@ const Indicator = () => {
 
   return (
     <>
-      <div className="flex-grow flex border-4 border-secundary-500 px-5 justify-around ">
+      <div className="flex-grow flex px-5 justify-around ">
 
-          <div className="w-[21rem] h-[12rem] bg-secundary-300 rounded-20 border-white border-4 relative">
-          <h1 className='text-stroke border-4 border-blue-500'>Disponibilidade</h1>
-
-          <h1 className='absolute top-5 right-2 text-4xl font-bold'>60</h1>
-
-          <IndicatorChart
-            data={data}
-            width={250}
-            height={250}
-            margin={{ top: 30, right: 30, bottom: 50, left: 50 }}
-            xKey="x"
-            yKeys={['y1']}
-            lineColors={['#4CAF50', '#2196F3', '#1c1c1c']}
-            lineWidth={3}
-            pointRadius={5}
-            backgroundColor="#f9f9f9"
-            grid={true}
-          />
+        <div className="w-[21rem] h-[12rem] bg-secundary-300 rounded-20 border-white border-4 relative flex flex-col">
+          <div className="flex">
+            <h1 className='text-2xl px-4 py-1 text-white'>Disponibilidade</h1>
           </div>
-        <div className="w-[21rem] h-[12rem] bg-secundary-300 rounded-20 border-white border-4">
+
+          <div className="absolute top-4 right-4 flex flex-col items-end">
+            <h1 className='text-5xl text-[#3f912f] custom-stroke font-extrabold'>60</h1>
+            <div className="flex gap-1 mt-1 items-center text-[#3f912f]">
+              <h2>9,09%</h2>
+              <TbTriangleFilled />
+            </div>
+          </div>
+          <div className="flex-grow flex items-end px-2 py-2">
+
+            <IndicatorChart
+              data={data}
+              width={200}
+              height={100}
+              margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+              xKey="x"
+              yKeys={['y1']}
+              lineColors={['#4CAF50', '#2196F3', '#1c1c1c']}
+              lineWidth={3}
+              pointRadius={5}
+              backgroundColor="#f9f9f9"
+              grid={true}
+            />
+          </div>
         </div>
-        <div className="w-[21rem] h-[12rem] bg-secundary-300 rounded-20 border-white border-4">
-        </div>
-        <div className="w-[21rem] h-[12rem] bg-secundary-300 rounded-20 border-white border-4">
-        </div>
+
       </div>
     </>
   )
