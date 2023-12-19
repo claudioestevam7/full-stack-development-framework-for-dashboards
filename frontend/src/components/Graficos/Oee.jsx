@@ -20,6 +20,8 @@ const DobleDonnuts = ({
   useEffect(() => {
     // Cores para as fatias
     const colors = d3.scaleOrdinal(['#e5231b','#fad3d1']);
+    const colors2 = d3.scaleOrdinal(['#405aa8','#d9deee']);
+    const colors3 = d3.scaleOrdinal(['#595c63','#dedee0']);
 
     // Função para gerar o layout do gráfico de pizza
     const pie = d3
@@ -73,14 +75,14 @@ const DobleDonnuts = ({
     arcs2
       .append('path')
       .attr('d', arc2)
-      .attr('fill', (d, i) => colors(i))
+      .attr('fill', (d, i) => colors2(i))
       .attr('stroke', borderColor)
       .style('stroke-width', `${borderWidth}px`);
 
     arcs3
       .append('path')
       .attr('d', arc3)
-      .attr('fill', (d, i) => colors(i))
+      .attr('fill', (d, i) => colors3(i))
       .attr('stroke', borderColor)
       .style('stroke-width', `${borderWidth}px`);
 

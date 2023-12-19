@@ -9,6 +9,7 @@ import Line from './components/Graficos/Line';
 import Bar from './components/Graficos/Bar';
 import Pareto from './components/Graficos/Pareto';
 import Oee from './components/Graficos/Oee';
+import Indicator from './components/Graficos/Indicator';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/bar" element={<Bar />}  />
           <Route path="/pareto" element={<Pareto />}  />
           <Route path="/oee" element={<Oee />}  />
+          <Route path="/indicator" element={<Indicator />}  />
         </Routes>
         </div>
       </Router>

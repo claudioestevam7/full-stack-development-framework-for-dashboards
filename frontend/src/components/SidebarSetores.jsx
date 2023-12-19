@@ -6,6 +6,7 @@ import { FaChartColumn, FaChartLine } from "react-icons/fa6";
 import { PiChartBarHorizontalFill } from "react-icons/pi";
 import { BiBarChartSquare } from "react-icons/bi";
 import { AiOutlineGlobal } from "react-icons/ai";
+import { CgTrello } from "react-icons/cg";
 
 import Logo from '../assets/logoPrincipal.svg'
 
@@ -20,7 +21,8 @@ const setores = [['Palette', '/palette', <FaPalette size={sizeIcon} />],
 ['Line', '/line', <FaChartLine size={sizeIcon} />],
 ['Bar', '/bar', <PiChartBarHorizontalFill size={sizeIcon} />],
 ['Pareto', '/pareto', <BiBarChartSquare size={sizeIcon} />],
-['OEE', '/oee', <AiOutlineGlobal size={sizeIcon} />]]
+['OEE', '/oee', <AiOutlineGlobal size={sizeIcon} />],
+['Indicator', '/indicator', <CgTrello size={sizeIcon} />]]
 
 const SidebarSetores = () => {
   const location = useLocation();
