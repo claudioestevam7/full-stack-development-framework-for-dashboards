@@ -146,8 +146,8 @@ const Indicator = () => {
             <h1 className=''>Disponibilidade</h1>
           </div>
 
-          <div className="absolute top-4 right-4 flex flex-col items-end text-[#043084]">
-            <h1 className='text-5xl custom-stroke font-extrabold'>60</h1>
+          <div className="absolute top-4 right-4 flex flex-col items-end text-white">
+            <h1 className='text-5xl font-extrabold'>60</h1>
             <div className="flex gap-1 mt-1 items-center">
               <h2>9,09%</h2>
               <TbTriangleFilled />
