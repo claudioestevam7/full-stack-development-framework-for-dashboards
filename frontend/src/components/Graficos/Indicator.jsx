@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import * as d3 from 'd3'
 import { TbTriangleFilled } from "react-icons/tb";
+import { LuZap } from "react-icons/lu";
 
 const IndicatorChart = ({
 
@@ -127,7 +128,7 @@ const Indicator = () => {
   const data = [
     { x: 1, y1: 10, y2: 10, y3: 30, y4: 10 },
     { x: 2, y1: 50, y2: 20, y3: 30, y4: 20 },
-    { x: 3, y1: 10, y2: 30, y3: 30, y4: 15 },
+    { x: 3, y1: 70, y2: 30, y3: 30, y4: 15 },
     { x: 4, y1: 45, y2: 40, y3: 30, y4: 30 },
     { x: 5, y1: 30, y2: 50, y3: 30, y4: 45 },
     { x: 6, y1: 25, y2: 60, y3: 30, y4: 15 },
@@ -139,14 +140,15 @@ const Indicator = () => {
     <>
       <div className="flex-grow flex px-5 justify-around ">
 
-        <div className="w-[21rem] h-[12rem] bg-secundary-300 rounded-20 border-white border-4 relative flex flex-col">
-          <div className="flex">
-            <h1 className='text-2xl px-4 py-1 text-white'>Disponibilidade</h1>
+        <div className="w-[21rem] h-[12rem] bg-secundary-400 rounded-20 border-white border-4 relative flex flex-col">
+          <div className="flex text-2xl px-2 py-1 text-white gap-2 items-center">
+          <LuZap/>
+            <h1 className=''>Disponibilidade</h1>
           </div>
 
-          <div className="absolute top-4 right-4 flex flex-col items-end">
-            <h1 className='text-5xl text-[#3f912f] custom-stroke font-extrabold'>60</h1>
-            <div className="flex gap-1 mt-1 items-center text-[#3f912f]">
+          <div className="absolute top-4 right-4 flex flex-col items-end text-[#043084]">
+            <h1 className='text-5xl custom-stroke font-extrabold'>60</h1>
+            <div className="flex gap-1 mt-1 items-center">
               <h2>9,09%</h2>
               <TbTriangleFilled />
             </div>
@@ -157,10 +159,10 @@ const Indicator = () => {
               data={data}
               width={200}
               height={100}
-              margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+              margin={{ top: 5, right: 5, bottom: 5, left: 5 }}
               xKey="x"
               yKeys={['y1']}
-              lineColors={['#4CAF50', '#2196F3', '#1c1c1c']}
+              lineColors={['#fff']}
               lineWidth={3}
               pointRadius={5}
               backgroundColor="#f9f9f9"

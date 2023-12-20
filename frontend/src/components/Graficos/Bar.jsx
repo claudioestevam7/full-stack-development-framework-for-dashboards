@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react'
 import * as d3 from 'd3'
 
+
+
 const HorizontalMultiClassBarChart = ({
   data,
   width = 800,
@@ -80,6 +82,17 @@ const HorizontalMultiClassBarChart = ({
       .attr('width', (d) => xScale(d[yKey]))
       .attr('height', yScale.bandwidth());
 
+    // Adicione os ícones ao final de cada barra
+    svg.selectAll('.icone')
+      .data(data)
+      .enter()
+      .append('image')
+      .attr('class', 'icone')
+      .attr('xlink:href', d => d.icone)
+      .attr('x', (d) => xScale(d[yKey])+5)  // Ajuste a posição conforme necessário
+      .attr('y', (d) => yScale(d[xKey]) + yScale.bandwidth() /2-10)  // Ajuste a posição conforme necessário
+      .attr('width', 20)  // Defina a largura do ícone conforme necessário
+      .attr('height', 20);  // Defina a altura do ícone conforme necessário
 
     // Adiciona rótulos no meio das barras
     svg
@@ -92,9 +105,12 @@ const HorizontalMultiClassBarChart = ({
       .attr('y', (d) => yScale(d[xKey]) + yScale.bandwidth() / 2)
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'middle')
-      .attr('font-size','24')
+      .attr('font-size', '24')
       .attr('fill', 'white')
       .text((d) => d[yKey]);
+
+    
+
 
     // Adiciona eixos
     svg.append('g').call(d3.axisLeft(yScale));
@@ -140,11 +156,11 @@ const HorizontalMultiClassBarChart = ({
 
 const Bar = () => {
   const data = [
-    { x: 'A', y: 20, class: 'Class1' },
-    { x: 'B', y: 35, class: 'Class1' },
-    { x: 'C', y: 15, class: 'Class2' },
-    { x: 'D', y: 25, class: 'Class2' },
-    { x: 'E', y: 30, class: 'Class3' },
+    { x: 'A', y: 20, class: 'Class1', icone: 'src/components/Graficos/arow1.png'},
+    { x: 'B', y: 35, class: 'Class1', icone: 'src/components/Graficos/arow2.png'},
+    { x: 'C', y: 15, class: 'Class2', icone: 'src/components/Graficos/arow1.png'},
+    { x: 'D', y: 25, class: 'Class2', icone: 'src/components/Graficos/arow1.png'},
+    { x: 'E', y: 30, class: 'Class3', icone: 'src/components/Graficos/arow1.png'},
   ];
 
   return (
@@ -161,6 +177,7 @@ const Bar = () => {
         backgroundColor="#f9f9f9"
         grid={true}
       />
+      
     </div>
   );
 }
