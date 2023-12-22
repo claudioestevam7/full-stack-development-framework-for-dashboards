@@ -2,14 +2,19 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import './App.css'
 import SidebarSetores from './components/SidebarSetores'
-import Column from './components/Graficos/Column';
-import Pie from './components/Graficos/Pie';
+import PiePage from './components/pages/Demonstracao/PiePage';
+import ColumnsPage from './components/pages/Demonstracao/ColumnsPage';
+import LinePage from './components/pages/Demonstracao/LinePage';
+import BarPage from './components/pages/Demonstracao/BarPage';
+import ParetoPage from './components/pages/Demonstracao/ParetoPage';
 import Palette from './components/Graficos/Palette';
-import Line from './components/Graficos/Line';
-import Bar from './components/Graficos/Bar';
-import Pareto from './components/Graficos/Pareto';
-import Oee from './components/Graficos/Oee';
-import Indicator from './components/Graficos/Indicator';
+
+import IndicatorPage from './components/Graficos/IndicatorPage';
+import SpeedometerPage from './components/pages/Demonstracao/SpeedometerPage';
+import OeePage from './components/pages/Demonstracao/OeePage';
+import Dashboard from './components/pages/Dashboard';
+import Teste from './components/Graficos/Teste';
+
 
 function App() {
 
@@ -20,17 +25,20 @@ function App() {
       <div className='w-[300px] border-4 border-primary-500 pt-10 bg-primary-200 rounded-20 p-3'>
         <SidebarSetores />
       </div>
-        <div className='w-full flex justify-center items-center'>
+        <div className='w-full h-full flex justify-center items-center'>
 
         <Routes>
           <Route path="/palette" element={<Palette />}  />
-          <Route exact path="/pie" element={<Pie />}/>
-          <Route path="/column" element={<Column />}  />
-          <Route path="/line" element={<Line />}  />
-          <Route path="/bar" element={<Bar />}  />
-          <Route path="/pareto" element={<Pareto />}  />
-          <Route path="/oee" element={<Oee />}  />
-          <Route path="/indicator" element={<Indicator />}  />
+          <Route exact path="/pie" element={<PiePage />}/>
+          <Route path="/column" element={<ColumnsPage />}  />
+          <Route path="/line" element={<LinePage />}  />
+          <Route path="/bar" element={<BarPage />}  />
+          <Route path="/pareto" element={<ParetoPage />}  />
+          <Route path="/oee" element={<OeePage />}  />
+          <Route path="/indicator" element={<IndicatorPage />}  />
+          <Route path="/speedometer" element={<SpeedometerPage />}  />
+          <Route path="/dashboard" element={<Dashboard />}  />
+          <Route path="/test" element={<Teste />}  />
         </Routes>
         </div>
       </Router>

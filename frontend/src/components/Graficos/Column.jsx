@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as d3 from 'd3'
 
-const MultiClassBarChart = ({
+const ColumnsChart = ({
   data,
   width = 800,
   height = 500,
@@ -19,7 +19,7 @@ const MultiClassBarChart = ({
     const svgHeight = height - margin.top - margin.bottom;
 
     // Agrupamento dos dados por classe
-    const nestedData = d3.group(data, (d) => d[classKey]);
+    const Data = d3.group(data, (d) => d[classKey]);
 
     // Escalas
     const xScale = d3
@@ -33,7 +33,7 @@ const MultiClassBarChart = ({
       .domain([0, d3.max(data, (d) => d[yKey])])
       .range([svgHeight, 0]);
 
-    const colorScale = d3.scaleOrdinal(d3.schemeCategory10).domain(nestedData.keys());
+    const colorScale = d3.scaleOrdinal(d3.schemeCategory10).domain(Data.keys());
 
     const legendHeight = 60; // Altura reservada para a legenda
 
@@ -51,7 +51,7 @@ const MultiClassBarChart = ({
     // Adiciona barras ao gráfico
     svg
       .selectAll('.bar-group')
-      .data(nestedData)
+      .data(Data)
       .enter()
       .append('g')
       .attr('class', 'bar-group')
@@ -99,35 +99,8 @@ const MultiClassBarChart = ({
     svg.append('g').attr('transform', `translate(0, ${svgHeight})`).call(d3.axisBottom(xScale));
 
     svg.append('g').call(d3.axisLeft(yScale))
-    .attr('font-size','24');
+    .attr('font-size','12');
 
-    // Adiciona grade ao gráfico
-    // if (grid) {
-    //   svg.append('g').attr('class', 'grid').call(d3.axisLeft(yScale).tickSize(-svgWidth).tickFormat(''));
-    // }
-
-    // Adiciona legenda abaixo do gráfico
-    const legend = svg
-      .selectAll('.legend')
-      .data(colorScale.domain())
-      .enter()
-      .append('g')
-      .attr('class', 'legend')
-      .attr('transform', (d, i) => `translate(${i * 80}, ${svgHeight + legendHeight / 2})`); // Posicionamento abaixo do gráfico
-
-    legend
-      .append('rect')
-      .attr('width', 18)
-      .attr('height', 18)
-      .style('fill', colorScale);
-
-    legend
-      .append('text')
-      .attr('x', 24)
-      .attr('y', 9)
-      .attr('dy', '.35em')
-      .style('text-anchor', 'start')
-      .text((d) => d);
 
     // Cleanup
     return () => {
@@ -138,31 +111,4 @@ const MultiClassBarChart = ({
   return <div ref={chartRef}></div>;
 };
 
-const Column = () => {
-
-  const data = [
-    { x: 'Categoria 1', y: 30, class: 'A' },
-    { x: 'Categoria 2', y: 50, class: 'B' },
-    { x: 'Categoria 3', y: 20, class: 'A' },
-    { x: 'Categoria 4', y: 70, class: 'C' },
-  ];
-
-  return (
-    <div>
-      <h1 className='font-bold'>Gráfico de Barras com Múltiplas Classes</h1>
-      <MultiClassBarChart
-        data={data}
-        width={800}
-        height={500}
-        margin={{ top: 30, right: 30, bottom: 50, left: 50 }}
-        xKey="x"
-        yKey="y"
-        classKey="class"
-        backgroundColor="#f9f9f9"
-        grid={true}
-      />
-    </div>
-  );
-}
-
-export default Column
+export default ColumnsChart

@@ -3,7 +3,7 @@ import * as d3 from 'd3'
 
 
 
-const HorizontalMultiClassBarChart = ({
+const BarChart = ({
   data,
   width = 800,
   height = 500,
@@ -154,32 +154,4 @@ const HorizontalMultiClassBarChart = ({
   return <div ref={chartRef}></div>;
 };
 
-const Bar = () => {
-  const data = [
-    { x: 'A', y: 20, class: 'Class1', icone: 'src/components/Graficos/arow1.png'},
-    { x: 'B', y: 35, class: 'Class1', icone: 'src/components/Graficos/arow2.png'},
-    { x: 'C', y: 15, class: 'Class2', icone: 'src/components/Graficos/arow1.png'},
-    { x: 'D', y: 25, class: 'Class2', icone: 'src/components/Graficos/arow1.png'},
-    { x: 'E', y: 30, class: 'Class3', icone: 'src/components/Graficos/arow1.png'},
-  ];
-
-  return (
-    <div>
-      <h2>Horizontal Multi-Class Bar Chart Example</h2>
-      <HorizontalMultiClassBarChart
-        data={data}
-        width={800}
-        height={500}
-        margin={{ top: 30, right: 30, bottom: 50, left: 50 }}
-        xKey="x"
-        yKey="y"
-        classKey="class"
-        backgroundColor="#f9f9f9"
-        grid={true}
-      />
-      
-    </div>
-  );
-}
-
-export default Bar
+export default BarChart
