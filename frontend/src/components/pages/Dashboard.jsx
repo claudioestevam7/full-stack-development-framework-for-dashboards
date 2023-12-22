@@ -38,9 +38,9 @@ const Dashboard = () => {
         <div className="border-2 h-full w-[45rem] flex items-center justify-center">
           <PieChart
             data={dataTurno}
-            width={230}
-            height={230}
-            radius={110}
+            width={200}
+            height={300}
+            radius={100}
             innerRadius={30}
             cornerRadius={5}
             padAngle={0.02}

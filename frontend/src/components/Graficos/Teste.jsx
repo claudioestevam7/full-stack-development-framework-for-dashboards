@@ -43,12 +43,18 @@ const PieChart = ({ data }) => {
 
     // Adiciona rótulos dentro do gráfico
     arcs
-      .append('text')
-      .attr('transform', (d) => `translate(${arc.centroid(d)/2})`)
-      // .attr('transform', (d) => (console.log(arc.centroid(d))))
-      .attr('dy', '0.35em')
-      .style('text-anchor', 'middle')
-      .text((d) => d.data.value);
+    .append('text')
+    .attr('transform', (d) => {
+      const [x, y] = arc.centroid(d);
+      const distance = radius * 1.1; // Ajuste conforme necessário
+      const angle = Math.atan2(y, x);
+      const newX = Math.cos(angle) * distance;
+      const newY = Math.sin(angle) * distance;
+      return `translate(${newX},${newY})`;
+    })
+    .attr('dy', '0.35em')
+    .style('text-anchor', 'middle')
+    .text((d) => d.data.value);
   }, [data]);
 
   return <svg ref={svgRef} width={400} height={400}></svg>;

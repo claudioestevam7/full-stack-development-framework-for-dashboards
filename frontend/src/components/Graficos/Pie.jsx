@@ -12,7 +12,7 @@ const PieChart = ({
   borderWidth = 2,
   borderColor = '#fff',
   backgroundColor = 'transparent',
-  palette=d3.schemeCategory10
+  palette = d3.schemeCategory10
 }) => {
   const chartRef = useRef(null);
 
@@ -20,6 +20,9 @@ const PieChart = ({
     // Cores para as fatias
     const colors = d3.scaleOrdinal(palette);
     // Função para gerar o layout do gráfico de pizza
+
+    const legendHeight = 10; // Altura reservada para a legenda
+
     const pie = d3
       .pie()
       .value((d) => d.value)
@@ -50,18 +53,68 @@ const PieChart = ({
     arcs
       .append('path')
       .attr('d', arc)
-      .attr('fill', (d, i) => colors(i))
+      .attr('fill', (d, i) => (colors(i)))
       .attr('stroke', borderColor)
       .style('stroke-width', `${borderWidth}px`);
 
+
+    
     // Adiciona rótulos nas fatias
     arcs
       .append('text')
       .attr('transform', (d) => `translate(${arc.centroid(d)})`)
       .attr('dy', '0.35em')
-      .text((d) => `${d.data.label}\n${d.data.value}`)
+      .text((d) => `${d.data.value}`)
       .attr('fill', 'white')
       .style('text-anchor', 'middle');
+
+    // Adiciona rótulos dentro do gráfico
+    // arcs
+    //   .append('text')
+    //   .attr('transform', (d) => {
+    //     const [x, y] = arc.centroid(d);
+    //     const distance = radius * 1; // Ajuste conforme necessário
+    //     const angle = Math.atan2(y, x);
+    //     const newX = Math.cos(angle) * distance;
+    //     const newY = Math.sin(angle) * distance;
+    //     return `translate(${newX},${newY})`;
+    //   })
+    //   .attr('dy', '0.35em')
+    //   .style('text-anchor', 'middle')
+
+    //   .text((d) => d.data.label);
+
+    // Adiciona legenda abaixo do gráfico
+    const legend = svg
+      .selectAll('.legend')
+      .data(colors.domain())
+      .enter()
+      .append('g')
+      .attr('d', 'legend')
+      .attr('transform', (d, i) => `translate(${i * 70 - 80}, ${height - 190})`); // Posicionamento abaixo do gráfico
+
+    legend
+      .append('rect')
+      .attr('width', 18)
+      .attr('height', 18)
+      .style('fill', colors);
+
+    legend
+      .append('text')
+      .attr('width', 18)
+      .attr('height', 18)
+      .attr('x', 24)
+      .attr('y', 9)
+      .attr('dy', '0.35em')
+      .text(d=> data[d].label)
+      .attr('fill', 'black');
+
+
+
+  
+
+
+
 
     // Cleanup
     return () => {
