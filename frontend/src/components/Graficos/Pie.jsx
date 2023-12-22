@@ -3,6 +3,7 @@ import * as d3 from 'd3';
 
 const PieChart = ({
   data,
+  title,
   width = 400,
   height = 400,
   radius = Math.min(width, height) / 2,
@@ -26,7 +27,7 @@ const PieChart = ({
     const pie = d3
       .pie()
       .value((d) => d.value)
-      .sort(null);
+      .sort((a, b) => b.value - a.value);
 
     // Arc generator para as fatias
     const arc = d3
@@ -47,8 +48,18 @@ const PieChart = ({
     // Adiciona um círculo de fundo (opcional)
     svg.append('circle').attr('r', radius).attr('fill', backgroundColor);
 
+
+    //  Adiciona o tirulo do grafico
+    svg.append('text')
+      .text(title)
+      .attr('font-weight','semibold')
+      .attr('transform', `translate(${-width/2+10},${-height / 2 + 40})`);
+
     // Criação das fatias
     const arcs = svg.selectAll('arc').data(pie(data)).enter().append('g');
+
+
+
 
     arcs
       .append('path')
@@ -58,7 +69,7 @@ const PieChart = ({
       .style('stroke-width', `${borderWidth}px`);
 
 
-    
+
     // Adiciona rótulos nas fatias
     arcs
       .append('text')
@@ -68,21 +79,6 @@ const PieChart = ({
       .attr('fill', 'white')
       .style('text-anchor', 'middle');
 
-    // Adiciona rótulos dentro do gráfico
-    // arcs
-    //   .append('text')
-    //   .attr('transform', (d) => {
-    //     const [x, y] = arc.centroid(d);
-    //     const distance = radius * 1; // Ajuste conforme necessário
-    //     const angle = Math.atan2(y, x);
-    //     const newX = Math.cos(angle) * distance;
-    //     const newY = Math.sin(angle) * distance;
-    //     return `translate(${newX},${newY})`;
-    //   })
-    //   .attr('dy', '0.35em')
-    //   .style('text-anchor', 'middle')
-
-    //   .text((d) => d.data.label);
 
     // Adiciona legenda abaixo do gráfico
     const legend = svg
@@ -91,7 +87,7 @@ const PieChart = ({
       .enter()
       .append('g')
       .attr('d', 'legend')
-      .attr('transform', (d, i) => `translate(${i * 70 - 80}, ${height - 190})`); // Posicionamento abaixo do gráfico
+      .attr('transform', (d, i) => `translate(${i * 80 - 100}, ${height - 190})`); // Posicionamento abaixo do gráfico
 
     legend
       .append('rect')
@@ -106,14 +102,8 @@ const PieChart = ({
       .attr('x', 24)
       .attr('y', 9)
       .attr('dy', '0.35em')
-      .text(d=> data[d].label)
+      .text(d => d + 1)
       .attr('fill', 'black');
-
-
-
-  
-
-
 
 
     // Cleanup

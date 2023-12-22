@@ -5,9 +5,11 @@ import * as d3 from 'd3'
 
 const BarChart = ({
   data,
+  meta,
+  title,
   width = 800,
   height = 500,
-  margin = { top: 30, right: 30, bottom: 50, left: 50 },
+  margin = { top: 50, right: 30, bottom: 50, left: 50 },
   xKey = 'x',
   yKey = 'y',
   classKey = 'class',
@@ -33,7 +35,8 @@ const BarChart = ({
       .scaleBand()
       .domain(data.map((d) => d[xKey]))
       .range([0, svgHeight])
-      .paddingInner(0.1);
+      .paddingInner(0.02);
+
 
     const colorScale = d3.scaleOrdinal(d3.schemeCategory10).domain(nestedData.keys());
 
@@ -50,6 +53,12 @@ const BarChart = ({
     // Adiciona um retângulo de fundo
     // svg.append('rect').attr('width', svgWidth).attr('height', svgHeight).attr('fill', backgroundColor);
 
+    //  Adiciona o tirulo do grafico
+    svg.append('text')
+      .text(title)
+      .attr('font-weight', 'semibold')
+      .attr('transform', `translate(${0},${-15})`);
+
     // Adiciona bordas das barras
     svg
       .selectAll('.bar-border')
@@ -60,7 +69,7 @@ const BarChart = ({
       .attr('x', 0)
       .attr('y', (d) => yScale(d[xKey]) - 1) // Ajuste para a largura da borda
       .attr('width', (d) => xScale(d[yKey]))
-      .attr('height', yScale.bandwidth() + 2) // Ajuste para a largura da borda
+      .attr('height', yScale.bandwidth() - 15 + 2) // Ajuste para a largura da borda
       .attr('stroke', 'white')
       .attr('stroke-width', 3)
       .attr('fill', 'none');
@@ -80,7 +89,7 @@ const BarChart = ({
       .attr('x', 0)
       .attr('y', (d) => yScale(d[xKey]))
       .attr('width', (d) => xScale(d[yKey]))
-      .attr('height', yScale.bandwidth());
+      .attr('height', yScale.bandwidth() - 15);
 
     // Adicione os ícones ao final de cada barra
     svg.selectAll('.icone')
@@ -89,8 +98,8 @@ const BarChart = ({
       .append('image')
       .attr('class', 'icone')
       .attr('xlink:href', d => d.icone)
-      .attr('x', (d) => xScale(d[yKey])+5)  // Ajuste a posição conforme necessário
-      .attr('y', (d) => yScale(d[xKey]) + yScale.bandwidth() /2-10)  // Ajuste a posição conforme necessário
+      .attr('x', (d) => xScale(d[yKey]) + 2)  // Ajuste a posição conforme necessário
+      .attr('y', (d) => yScale(d[xKey]) + yScale.bandwidth() / 2 -15)  // Ajuste a posição conforme necessário
       .attr('width', 20)  // Defina a largura do ícone conforme necessário
       .attr('height', 20);  // Defina a altura do ícone conforme necessário
 
@@ -102,14 +111,32 @@ const BarChart = ({
       .append('text')
       .attr('class', 'bar-label')
       .attr('x', (d) => xScale(d[yKey]) / 2)
-      .attr('y', (d) => yScale(d[xKey]) + yScale.bandwidth() / 2)
+      .attr('y', (d) => yScale(d[xKey]) + yScale.bandwidth() / 2 - 5)
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'middle')
-      .attr('font-size', '24')
+      .attr('font-size', '18')
       .attr('fill', 'white')
       .text((d) => d[yKey]);
 
-    
+
+    // Adicione a linha vertical no valor da meta
+    svg.append('line')
+      .attr('x1', xScale(meta))
+      .attr('x2', xScale(meta))
+      .attr('y1', -30)
+      .attr('y2', height-100)
+      .attr('stroke', 'red')
+      .attr('stroke-width', 2);
+
+    // Adicione um rótulo para a linha
+    svg.append('text')
+      .attr('x', -20)
+      .attr('y', -xScale(meta) - 10)  // Ajuste conforme necessário para a posição vertical do rótulo
+      .attr('text-anchor', 'middle')  // Alinhamento do texto ao meio
+      .attr('fill', 'red')
+      .attr('transform', 'rotate(90)')
+      .text('Meta');  // O texto que você deseja exibir
+
 
 
     // Adiciona eixos
@@ -117,33 +144,10 @@ const BarChart = ({
 
     svg.append('g').attr('transform', `translate(0, ${svgHeight})`).call(d3.axisBottom(xScale));
 
-    // Adiciona grade ao gráfico
-    // if (grid) {
-    //   svg.append('g').attr('class', 'grid').call(d3.axisLeft(yScale).tickSize(-svgWidth).tickFormat(''));
-    // }
 
-    // Adiciona legenda abaixo do gráfico
-    const legend = svg
-      .selectAll('.legend')
-      .data(colorScale.domain())
-      .enter()
-      .append('g')
-      .attr('class', 'legend')
-      .attr('transform', (d, i) => `translate(${i * 80}, ${svgHeight + legendHeight / 2})`); // Posicionamento abaixo do gráfico
 
-    legend
-      .append('rect')
-      .attr('width', 18)
-      .attr('height', 18)
-      .style('fill', colorScale);
 
-    legend
-      .append('text')
-      .attr('x', 24)
-      .attr('y', 9)
-      .attr('dy', '.35em')
-      .style('text-anchor', 'start')
-      .text((d) => d);
+
 
     // Cleanup
     return () => {

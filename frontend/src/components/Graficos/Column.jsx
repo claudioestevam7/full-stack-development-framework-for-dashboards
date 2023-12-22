@@ -3,6 +3,7 @@ import * as d3 from 'd3'
 
 const ColumnsChart = ({
   data,
+  title = 'Insira um titulo',
   width = 800,
   height = 500,
   margin = { top: 30, right: 30, bottom: 50, left: 50 },
@@ -26,7 +27,7 @@ const ColumnsChart = ({
       .scaleBand()
       .domain(data.map((d) => d[xKey]))
       .range([0, svgWidth])
-      .paddingInner(0.1);
+      .paddingInner(0.2);
 
     const yScale = d3
       .scaleLinear()
@@ -35,7 +36,7 @@ const ColumnsChart = ({
 
     const colorScale = d3.scaleOrdinal(d3.schemeCategory10).domain(Data.keys());
 
-    const legendHeight = 60; // Altura reservada para a legenda
+    const legendHeight = 0; // Altura reservada para a legenda
 
     const svg = d3
       .select(chartRef.current)
@@ -47,6 +48,12 @@ const ColumnsChart = ({
 
     // Adiciona um retângulo de fundo
     // svg.append('rect').attr('width', svgWidth).attr('height', svgHeight).attr('fill', backgroundColor);
+
+    //  Adiciona o tirulo do grafico
+    svg.append('text')
+      .text(title)
+      .attr('font-weight', 'semibold')
+      .attr('transform', `translate(${0},${-15})`);
 
     // Adiciona barras ao gráfico
     svg
@@ -90,16 +97,33 @@ const ColumnsChart = ({
       .attr('x', (d) => xScale(d[xKey]) + xScale.bandwidth() / 2)
       .attr('y', (d) => yScale(d[yKey]) + 25) // Ajuste para centralizar verticalmente o rótulo
       .attr('text-anchor', 'middle')
-      .attr('font-size','24')
+      .attr('font-size', '24')
       .attr('fill', 'white')
-      .attr('background-color','black')
+      .attr('background-color', 'black')
       .text((d) => d[yKey]);
 
     // Adiciona eixos
     svg.append('g').attr('transform', `translate(0, ${svgHeight})`).call(d3.axisBottom(xScale));
 
     svg.append('g').call(d3.axisLeft(yScale))
-    .attr('font-size','12');
+      .attr('font-size', '12');
+
+    // Adicione a linha vertical no valor x = 20
+    svg.append('line')
+      .attr('x1', 0)
+      .attr('x2', width)
+      .attr('y1', yScale(30))
+      .attr('y2', yScale(30))
+      .attr('stroke', 'red')
+      .attr('stroke-width', 2);
+
+    // Adicione um rótulo para a linha
+    svg.append('text')
+      .attr('x', width-70)
+      .attr('y', yScale(31))  // Ajuste conforme necessário para a posição vertical do rótulo
+      .attr('text-anchor', 'middle')  // Alinhamento do texto ao meio
+      .attr('fill', 'red')
+      .text('Meta');  // O texto que você deseja exibir
 
 
     // Cleanup
