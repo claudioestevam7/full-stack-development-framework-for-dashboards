@@ -1,13 +1,13 @@
 #root {
-  max-width: 1850px;
-  max-height: 900px;
+  /* max-width: 1850px; */
+  /* max-height: 1000px; */
   margin: 0 auto;
   padding: 1rem;
   text-align: center;
 
-  width: full ;
-  height: 1000px;
+  width:1920px;
+  height: 1080px;
   background-image: url('./assets/fundotextura.png'); /* Substitua pelo link da sua textura */
-  /* background-position:initial; */
-  /* background-size: contain; */
+  background-position:initial;
+  background-size: contain;
 }

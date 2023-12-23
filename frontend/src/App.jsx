@@ -19,7 +19,7 @@ import Teste from './components/Graficos/Teste';
 function App() {
 
   return (
-    <div className='flex h-full  font-[Roboto]'>
+    <div className='flex h-full   font-[Roboto]'>
 
       <Router>
       <div className='w-[300px] border-4 border-primary-500 pt-10 bg-primary-200 rounded-20 p-3'>
@@ -29,7 +29,7 @@ function App() {
 
         <Routes>
           <Route path="/palette" element={<Palette />}  />
-          <Route exact path="/pie" element={<PiePage />}/>
+          <Route path="/pie" element={<PiePage />}/>
           <Route path="/column" element={<ColumnsPage />}  />
           <Route path="/line" element={<LinePage />}  />
           <Route path="/bar" element={<BarPage />}  />
@@ -37,7 +37,7 @@ function App() {
           <Route path="/oee" element={<OeePage />}  />
           <Route path="/indicator" element={<IndicatorPage />}  />
           <Route path="/speedometer" element={<SpeedometerPage />}  />
-          <Route path="/dashboard" element={<Dashboard />}  />
+          <Route exact path="/" element={<Dashboard />} index />
           <Route path="/test" element={<Teste />}  />
         </Routes>
         </div>

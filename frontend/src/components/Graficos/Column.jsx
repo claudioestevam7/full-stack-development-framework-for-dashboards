@@ -3,7 +3,6 @@ import * as d3 from 'd3'
 
 const ColumnsChart = ({
   data,
-  title = 'Insira um titulo',
   width = 800,
   height = 500,
   margin = { top: 30, right: 30, bottom: 50, left: 50 },
@@ -48,12 +47,6 @@ const ColumnsChart = ({
 
     // Adiciona um retângulo de fundo
     // svg.append('rect').attr('width', svgWidth).attr('height', svgHeight).attr('fill', backgroundColor);
-
-    //  Adiciona o tirulo do grafico
-    svg.append('text')
-      .text(title)
-      .attr('font-weight', 'semibold')
-      .attr('transform', `translate(${0},${-15})`);
 
     // Adiciona barras ao gráfico
     svg

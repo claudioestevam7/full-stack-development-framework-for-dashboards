@@ -6,7 +6,6 @@ import * as d3 from 'd3'
 const BarChart = ({
   data,
   meta,
-  title,
   width = 800,
   height = 500,
   margin = { top: 50, right: 30, bottom: 50, left: 50 },
@@ -52,12 +51,6 @@ const BarChart = ({
 
     // Adiciona um retângulo de fundo
     // svg.append('rect').attr('width', svgWidth).attr('height', svgHeight).attr('fill', backgroundColor);
-
-    //  Adiciona o tirulo do grafico
-    svg.append('text')
-      .text(title)
-      .attr('font-weight', 'semibold')
-      .attr('transform', `translate(${0},${-15})`);
 
     // Adiciona bordas das barras
     svg

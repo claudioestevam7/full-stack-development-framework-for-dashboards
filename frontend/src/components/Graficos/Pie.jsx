@@ -3,7 +3,6 @@ import * as d3 from 'd3';
 
 const PieChart = ({
   data,
-  title,
   width = 400,
   height = 400,
   radius = Math.min(width, height) / 2,
@@ -43,17 +42,17 @@ const PieChart = ({
       .attr('width', width)
       .attr('height', height)
       .append('g')
-      .attr('transform', `translate(${width / 2},${height / 2})`);
+      .attr('transform', `translate(${width / 2},${height / 2 - 10})`);
 
     // Adiciona um círculo de fundo (opcional)
     svg.append('circle').attr('r', radius).attr('fill', backgroundColor);
 
 
-    //  Adiciona o tirulo do grafico
-    svg.append('text')
-      .text(title)
-      .attr('font-weight','semibold')
-      .attr('transform', `translate(${-width/2+10},${-height / 2 + 40})`);
+    // //  Adiciona o tirulo do grafico
+    // svg.append('text')
+    //   .text(title)
+    //   .attr('font-weight','semibold')
+    //   .attr('transform', `translate(${-width/2+10},${-height / 2 + 40})`);
 
     // Criação das fatias
     const arcs = svg.selectAll('arc').data(pie(data)).enter().append('g');
@@ -87,7 +86,7 @@ const PieChart = ({
       .enter()
       .append('g')
       .attr('d', 'legend')
-      .attr('transform', (d, i) => `translate(${i * 80 - 100}, ${height - 190})`); // Posicionamento abaixo do gráfico
+      .attr('transform', (d, i) => `translate(${i * 80 - 100}, ${height - 160})`); // Posicionamento abaixo do gráfico
 
     legend
       .append('rect')

@@ -1,9 +1,13 @@
 import React from 'react'
 import IndicatorChart from './Indicator';
 import { TbTriangleFilled, TbTriangleInvertedFilled } from "react-icons/tb";
+import { dataIndicadorDisponibilidade } from '../pages/Dados/dados';
+import { LuZap } from 'react-icons/lu';
 
-
-const IndicatorPage = ({dataIndicator, nameIndicator, iconIndicator}) => {
+const IndicatorPage = ({
+  dataIndicator = dataIndicadorDisponibilidade, 
+  nameIndicator = 'Disponibilidade', 
+  iconIndicator = <LuZap />}) => {
 
   if (dataIndicator[dataIndicator.length - 1].y1 > dataIndicator[dataIndicator.length - 2].y1){
 
@@ -30,8 +34,8 @@ const IndicatorPage = ({dataIndicator, nameIndicator, iconIndicator}) => {
             <h1 className=''>{nameIndicator}</h1>
           </div>
 
-          <div className="absolute top-4 right-4 flex flex-col items-end text-white">
-            <h1 className='text-5xl font-extrabold'>{valorFinal}</h1>
+          <div className="absolute top-4 right-3 flex flex-col items-end text-white">
+            <h1 className='text-5xl font-extrabold'>{valorFinal}%</h1>
             <div className="flex gap-1 mt-1 items-center">
               <h2>{variacao.toFixed(2)} %</h2>
               {valorFinal > valorInicial ? <TbTriangleFilled /> : <TbTriangleInvertedFilled/>}

@@ -26,7 +26,7 @@ const setores = [['Palette', '/palette', <FaPalette size={sizeIcon} />],
 ['Indicator', '/indicator', <CgTrello size={sizeIcon} />],
 ['Speedometer', '/speedometer', <IoIosSpeedometer size={sizeIcon} />],
 ['Test', '/test', <IoIosSpeedometer size={sizeIcon} />],
-['Dashboard', '/dashboard', <IoIosSpeedometer size={sizeIcon} />]]
+['Dashboard', '/', <IoIosSpeedometer size={sizeIcon} />]]
 
 const SidebarSetores = () => {
   const location = useLocation();
@@ -42,7 +42,7 @@ const SidebarSetores = () => {
 
 
       {/* Campos de escolher as abas */}
-      <div className="mt-[1rem] w-full">
+      <div className="mt-[5rem] w-full">
         {setores.map((setor) => {
           return (
             // botão para a aba escolhida
