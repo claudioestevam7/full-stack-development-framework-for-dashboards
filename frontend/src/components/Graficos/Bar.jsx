@@ -116,8 +116,8 @@ const BarChart = ({
     svg.append('line')
       .attr('x1', xScale(meta))
       .attr('x2', xScale(meta))
-      .attr('y1', -30)
-      .attr('y2', height-100)
+      .attr('y1', yScale(data[0].x) -50)
+      .attr('y2', yScale(data[data.length-1].x) +30)
       .attr('stroke', 'red')
       .attr('stroke-width', 2);
 
