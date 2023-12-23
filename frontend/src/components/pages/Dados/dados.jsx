@@ -48,7 +48,7 @@ export const dataTurno = [
 ];
 
 export const dataLinha = [
-  { x: 'A', y: 20, icone: 'src/assets/arow1.png' },
+  { x: 'A', y: 20, icone: 'frontend/src/assets/arow1.png' },
   { x: 'B', y: 35, icone: 'src/assets/arow2.png' },
   { x: 'C', y: 15, icone: 'src/assets/arow1.png' },
   { x: 'D', y: 25, icone: 'src/assets/arow2.png' },
