@@ -49,7 +49,7 @@ const SidebarSetores = () => {
           return (
             // botão para a aba escolhida
             <Link to={setor[1]} key={setor}>
-              <div className={location.pathname == setor[1] ? "w-full h-[3rem] bg-secundary-500 flex justify-start items-center px-7 mb-2 rounded-20 text-primary-100 duration-500 delay-500`" :
+              <div className={location.pathname == setor[1] ? "w-full h-[3rem] bg-secundary-100 flex justify-start items-center px-7 mb-2 rounded-20 text-primary-100 duration-500 delay-500`" :
                 "w-full h-[3rem] bg-primary-100 flex justify-start items-center px-7 mb-2 rounded-20 duration-500 delay-75 hover:bg-primary-400"} >
                 <div className='mr-5 w-6'>
                   {setor[2]}
