@@ -10,6 +10,7 @@ const ColumnsChart = ({
   yKey = 'y',
   classKey = 'class',
   backgroundColor = '#f9f9f9',
+  color='#263665',
   grid = true,
 }) => {
   const chartRef = useRef(null);
@@ -55,7 +56,7 @@ const ColumnsChart = ({
       .enter()
       .append('g')
       .attr('class', 'bar-group')
-      .attr('fill', (d) => colorScale(d[0]))
+      .attr('fill', (d) => color)
       .selectAll('rect')
       .data((d) => d[1])
       .enter()
@@ -90,7 +91,7 @@ const ColumnsChart = ({
       .attr('x', (d) => xScale(d[xKey]) + xScale.bandwidth() / 2)
       .attr('y', (d) => yScale(d[yKey]) + 25) // Ajuste para centralizar verticalmente o rótulo
       .attr('text-anchor', 'middle')
-      .attr('font-size', '24')
+      .attr('font-size', '18')
       .attr('fill', 'white')
       .attr('background-color', 'black')
       .text((d) => d[yKey]);
@@ -116,6 +117,7 @@ const ColumnsChart = ({
       .attr('y', yScale(31))  // Ajuste conforme necessário para a posição vertical do rótulo
       .attr('text-anchor', 'middle')  // Alinhamento do texto ao meio
       .attr('fill', 'red')
+      .attr('font-size', '20px')
       .text('Meta');  // O texto que você deseja exibir
 
 

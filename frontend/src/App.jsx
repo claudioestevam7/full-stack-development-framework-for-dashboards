@@ -19,7 +19,7 @@ import Teste from './components/Graficos/Teste';
 function App() {
 
   return (
-    <div className='flex h-full   font-[Roboto]'>
+    <div className='flex h-full font-[Roboto]'>
 
       <Router>
       <div className='w-[300px] border-4 border-primary-500 pt-10 bg-primary-200 rounded-20 p-3'>

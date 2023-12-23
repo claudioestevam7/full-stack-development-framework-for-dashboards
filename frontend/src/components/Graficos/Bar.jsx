@@ -1,6 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import * as d3 from 'd3'
+import { FaArrowAltCircleRight } from "react-icons/fa";
 
+const t =()=>{  
+<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>       }
 
 
 const BarChart = ({
@@ -13,6 +18,7 @@ const BarChart = ({
   yKey = 'y',
   classKey = 'class',
   backgroundColor = '#f9f9f9',
+  color = '#263665',
   grid = true,
 }) => {
   const chartRef = useRef(null);
@@ -74,7 +80,7 @@ const BarChart = ({
       .enter()
       .append('g')
       .attr('class', 'bar-group')
-      .attr('fill', (d) => colorScale(d[0]))
+      .attr('fill', (d) => color)
       .selectAll('rect')
       .data((d) => d[1])
       .enter()
@@ -85,16 +91,36 @@ const BarChart = ({
       .attr('height', yScale.bandwidth() - 15);
 
     // Adicione os ícones ao final de cada barra
-    svg.selectAll('.icone')
-      .data(data)
-      .enter()
-      .append('image')
-      .attr('class', 'icone')
-      .attr('xlink:href', d => d.icone)
-      .attr('x', (d) => xScale(d[yKey]) + 2)  // Ajuste a posição conforme necessário
-      .attr('y', (d) => yScale(d[xKey]) + yScale.bandwidth() / 2 -15)  // Ajuste a posição conforme necessário
-      .attr('width', 20)  // Defina a largura do ícone conforme necessário
-      .attr('height', 20);  // Defina a altura do ícone conforme necessário
+    // for (let key in data) {
+    //   // console.log(data[key].icone)
+    //   if (data[key].y < meta) {
+
+    //     svg.selectAll('.icone')
+    //       .data(data)
+    //       .enter()
+    //       .append('foreignObject')
+    //       .attr('class', 'icone')
+    //       .attr('x', (d) => xScale(d[yKey]) + 2)
+    //       .attr('y', (d) => yScale(d[xKey]) + yScale.bandwidth() / 2 - 15)
+    //       .attr('width', 20)
+    //       .attr('height', 20)
+    //       .html(() => t);
+
+
+
+    //   }
+    // }
+
+    // svg.selectAll('.icone')
+    //   .data(data)
+    //   .enter()
+    //   .append('image')
+    //   .attr('class', 'icone')
+    //   .attr('xlink:href', d => d.icone)
+    //   .attr('x', (d) => xScale(d[yKey]) + 2)  // Ajuste a posição conforme necessário
+    //   .attr('y', (d) => yScale(d[xKey]) + yScale.bandwidth() / 2 - 15)  // Ajuste a posição conforme necessário
+    //   .attr('width', 20)  // Defina a largura do ícone conforme necessário
+    //   .attr('height', 20);  // Defina a altura do ícone conforme necessário
 
     // Adiciona rótulos no meio das barras
     svg
@@ -116,18 +142,19 @@ const BarChart = ({
     svg.append('line')
       .attr('x1', xScale(meta))
       .attr('x2', xScale(meta))
-      .attr('y1', yScale(data[0].x) -50)
-      .attr('y2', yScale(data[data.length-1].x) +30)
+      .attr('y1', yScale(data[0].x) - 50)
+      .attr('y2', yScale(data[data.length - 1].x) + 30)
       .attr('stroke', 'red')
       .attr('stroke-width', 2);
 
     // Adicione um rótulo para a linha
     svg.append('text')
-      .attr('x', -20)
+      .attr('x', -30)
       .attr('y', -xScale(meta) - 10)  // Ajuste conforme necessário para a posição vertical do rótulo
       .attr('text-anchor', 'middle')  // Alinhamento do texto ao meio
       .attr('fill', 'red')
       .attr('transform', 'rotate(90)')
+      .attr('font-size', '20px')
       .text('Meta');  // O texto que você deseja exibir
 
 

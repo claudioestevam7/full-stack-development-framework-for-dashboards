@@ -75,6 +75,7 @@ const PieChart = ({
       .attr('transform', (d) => `translate(${arc.centroid(d)})`)
       .attr('dy', '0.35em')
       .text((d) => `${d.data.value}`)
+      .attr('font-size', '18')
       .attr('fill', 'white')
       .style('text-anchor', 'middle');
 
@@ -86,7 +87,7 @@ const PieChart = ({
       .enter()
       .append('g')
       .attr('d', 'legend')
-      .attr('transform', (d, i) => `translate(${i * 80 - 100}, ${height - 160})`); // Posicionamento abaixo do gráfico
+      .attr('transform', (d, i) => `translate(${i * 90 - 100}, ${height - 170})`); // Posicionamento abaixo do gráfico
 
     legend
       .append('rect')
@@ -101,7 +102,7 @@ const PieChart = ({
       .attr('x', 24)
       .attr('y', 9)
       .attr('dy', '0.35em')
-      .text(d => d + 1)
+      .text(d => data[d].label)
       .attr('fill', 'black');
 
 

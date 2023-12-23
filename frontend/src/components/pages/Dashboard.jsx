@@ -48,8 +48,8 @@ const Dashboard = () => {
             // title={"OEE por Turno"}
             width={400}
             height={300}
-            radius={130}
-            innerRadius={30}
+            radius={120}
+            innerRadius={50}
             cornerRadius={5}
             padAngle={0.02}
             borderWidth={2}
@@ -64,11 +64,12 @@ const Dashboard = () => {
             meta={20}
             width={500}
             height={260}
-            margin={{ top: 45, right: 30, bottom: 10, left: 30 }}
+            margin={{ top: 60, right: 30, bottom: 10, left: 30 }}
             xKey="x"
             yKey="y"
             classKey="class"
             backgroundColor="#f9f9f9"
+            color='#263665'
             grid={true}
           />
         </div>
@@ -84,6 +85,7 @@ const Dashboard = () => {
             yKey="y"
             classKey="class"
             backgroundColor="#f9f9f9"
+            color='#263665'
             grid={true}
           />
         </div>
@@ -108,6 +110,7 @@ const Dashboard = () => {
             yKey="y"
             classKey="class"
             backgroundColor="#f9f9f9"
+            color='#263665'
             grid={true}
           />
         </div>
@@ -123,6 +126,7 @@ const Dashboard = () => {
             yKey="y"
             classKey="class"
             backgroundColor="#f9f9f9"
+            color='#263665'
             grid={true}
           />
         </div>

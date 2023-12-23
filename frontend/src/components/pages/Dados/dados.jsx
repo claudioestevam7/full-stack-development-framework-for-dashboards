@@ -42,9 +42,9 @@ export const dataIndicadorOEE = [
 ];
 
 export const dataTurno = [
-  { label: 'Turno 1', value: 30 },
-  { label: 'Turno 2', value: 50 },
-  { label: 'Turno 3', value: 20 },
+  { label: 'Manhã', value: 30 },
+  { label: 'Tarde', value: 50 },
+  { label: 'Noite', value: 20 },
 ];
 
 export const dataLinha = [
