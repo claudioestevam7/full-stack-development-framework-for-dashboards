@@ -16,17 +16,19 @@ const setorActivate = { iconcor: '#fff' }
 const corIcon = '#1c1c1c'
 const sizeIcon = 30
 
-const setores = [['Palette', '/palette', <FaPalette size={sizeIcon} />],
-['Pie', '/pie', <FaChartPie size={sizeIcon} />],
-['Column', '/column', <FaChartColumn size={sizeIcon} />],
-['Line', '/line', <FaChartLine size={sizeIcon} />],
-['Bar', '/bar', <PiChartBarHorizontalFill size={sizeIcon} />],
-['Pareto', '/pareto', <BiBarChartSquare size={sizeIcon} />],
-['OEE', '/oee', <AiOutlineGlobal size={sizeIcon} />],
-['Indicator', '/indicator', <CgTrello size={sizeIcon} />],
-['Speedometer', '/speedometer', <IoIosSpeedometer size={sizeIcon} />],
-// ['Test', '/test', <IoIosSpeedometer size={sizeIcon} />],
-['Dashboard', '/', <IoIosSpeedometer size={sizeIcon} />]]
+const setores = [
+  ['Dashboard', '/', <IoIosSpeedometer size={sizeIcon} />],
+  ['Palette', '/palette', <FaPalette size={sizeIcon} />],
+  ['Pie', '/pie', <FaChartPie size={sizeIcon} />],
+  ['Column', '/column', <FaChartColumn size={sizeIcon} />],
+  ['Line', '/line', <FaChartLine size={sizeIcon} />],
+  ['Bar', '/bar', <PiChartBarHorizontalFill size={sizeIcon} />],
+  ['Pareto', '/pareto', <BiBarChartSquare size={sizeIcon} />],
+  ['OEE', '/oee', <AiOutlineGlobal size={sizeIcon} />],
+  ['Indicator', '/indicator', <CgTrello size={sizeIcon} />],
+  ['Speedometer', '/speedometer', <IoIosSpeedometer size={sizeIcon} />],
+  ['Test', '/test', <IoIosSpeedometer size={sizeIcon} />],
+]
 
 const SidebarSetores = () => {
   const location = useLocation();
@@ -37,7 +39,7 @@ const SidebarSetores = () => {
       <div className="w-full ">
 
         <img src={Logo} />
-      <h1 className='font-[Roboto] text-xl mt-2 font-bold'>DASHBOARD</h1>
+        <h1 className='font-[Roboto] text-xl mt-2 font-bold'>DASHBOARD</h1>
       </div>
 
 
