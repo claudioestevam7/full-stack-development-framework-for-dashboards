@@ -25,7 +25,7 @@ const setores = [['Palette', '/palette', <FaPalette size={sizeIcon} />],
 ['OEE', '/oee', <AiOutlineGlobal size={sizeIcon} />],
 ['Indicator', '/indicator', <CgTrello size={sizeIcon} />],
 ['Speedometer', '/speedometer', <IoIosSpeedometer size={sizeIcon} />],
-['Test', '/test', <IoIosSpeedometer size={sizeIcon} />],
+// ['Test', '/test', <IoIosSpeedometer size={sizeIcon} />],
 ['Dashboard', '/', <IoIosSpeedometer size={sizeIcon} />]]
 
 const SidebarSetores = () => {
